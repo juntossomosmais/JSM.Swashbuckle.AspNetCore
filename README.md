@@ -82,11 +82,12 @@ public class Startup
      {
          // Swagger
          services.AddSwaggerConfiguration(Configuration);
-     } 
-     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-	 {
-	    // Swagger 
-	    app.UseSwaggerConfiguration(Configuration);
-	 }
+     }
+	 
+	 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+     {
+         // Swagger
+         app.UseSwaggerConfiguration(Configuration);
+     }
 }
 ```
