@@ -17,7 +17,9 @@ dotnet test
 ```
 
 ## Features
+
 ### Attributes
+
 ``` C#
 [SwaggerExclude]
 public string MyProperty { get; set; }
@@ -34,27 +36,6 @@ public string MyProperty { get; set; }
 ```
 `[SwaggerRequired]` - The decorator is responsible for setting value required property to open api documentation
 
-### Configurations
-With the lib it is possible to configure Swagger in the API project registering the service and configuring the pipeline.
-The feature is implemented by extending the contract to a collection of service descriptors (IServiceCollection) and the class that provides the mechanisms to configure an application's request pipeline (IApplicationBuilder).
-Implementation example in project API Startup.cs: 
-
-``` C#
-public virtual void ConfigureServices(IServiceCollection services)
-{
-    // Register Swagger Configuration in app
-    services.AddSwaggerConfiguration(Configuration);
-}
-```
-
-``` C#
-public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-{
-    // Configure Swagger Configuration in pipeline 
-    app.UseSwaggerConfiguration(Configuration);
-}
-```
-
 ## How to use in project 
 
 * Install the following NuGet packages into your solution's project:  
@@ -67,15 +48,21 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    ...
     <ItemGroup>
 	    <PackageReference Include="JSM.Swashbuckle.AspNetCore.Swagger" Version="1.0.0" />
-	  </ItemGroup>
+    </ItemGroup>
     ...
 </Project>
 ```
+
 ## How to use in API project 
+
+With the lib it is possible to configure Swagger in the API project registering the service and configuring the pipeline.
+The feature is implemented by extending the contract to a collection of service descriptors (IServiceCollection) and the class that provides the mechanisms to configure an application's request pipeline (IApplicationBuilder).
+Implementation example in project API Startup.cs: 
 
 * Add using referente into Startup class.
 * Add the service AddSwaggerConfiguration in ConfigureServices.
 * Configure the pipeline with UseSwaggerConfiguration in Configure.
+* Include configuration Swagger in appsettings.json.
 * Build your solution. 
 
 ```C#
@@ -97,11 +84,11 @@ public class Startup
          // Swagger
          services.AddSwaggerConfiguration(Configuration);
      }
-     
-	 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-	 {
-	    // Swagger 
-	    app.UseSwaggerConfiguration(Configuration);
-	 }
+
+     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+     {
+         // Swagger
+         app.UseSwaggerConfiguration(Configuration);
+     }
 }
 ```
