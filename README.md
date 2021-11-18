@@ -17,7 +17,7 @@ dotnet test
 ```
 
 ## Features
-**Attributes**
+### Attributes
 ``` C#
 [SwaggerExclude]
 public string MyProperty { get; set; }
@@ -34,7 +34,7 @@ public string MyProperty { get; set; }
 ```
 `[SwaggerRequired]` - The decorator is responsible for setting value required property to open api documentation
 
-**Configurations**
+### Configurations
 With the lib it is possible to configure Swagger in the API project registering the service and configuring the pipeline.
 The feature is implemented by extending the contract to a collection of service descriptors (IServiceCollection) and the class that provides the mechanisms to configure an application's request pipeline (IApplicationBuilder).
 Implementation example in project API Startup.cs: 
@@ -74,7 +74,8 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 ## How to use in API project 
 
 * Add using referente into Startup class.
-* Add  the service AddSwaggerConfiguration in ConfigureServices.
+* Add the service AddSwaggerConfiguration in ConfigureServices.
+* Configure the pipeline with UseSwaggerConfiguration in Configure.
 * Build your solution. 
 
 ```C#
