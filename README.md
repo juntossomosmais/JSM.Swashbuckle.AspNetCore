@@ -17,7 +17,9 @@ dotnet test
 ```
 
 ## Features
+
 ### Attributes
+
 ``` C#
 [SwaggerExclude]
 public string MyProperty { get; set; }
@@ -33,27 +35,6 @@ public string MyProperty { get; set; }
 public string MyProperty { get; set; }
 ```
 `[SwaggerRequired]` - The decorator is responsible for setting value required property to open api documentation
-
-### Configurations
-With the lib it is possible to configure Swagger in the API project registering the service and configuring the pipeline.
-The feature is implemented by extending the contract to a collection of service descriptors (IServiceCollection) and the class that provides the mechanisms to configure an application's request pipeline (IApplicationBuilder).
-Implementation example in project API Startup.cs: 
-
-``` C#
-public virtual void ConfigureServices(IServiceCollection services)
-{
-    // Register Swagger Configuration in app
-    services.AddSwaggerConfiguration(Configuration);
-}
-```
-
-``` C#
-public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-{
-    // Configure Swagger Configuration in pipeline 
-    app.UseSwaggerConfiguration(Configuration);
-}
-```
 
 ## How to use in project 
 
@@ -71,7 +52,12 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     ...
 </Project>
 ```
+
 ## How to use in API project 
+
+With the lib it is possible to configure Swagger in the API project registering the service and configuring the pipeline.
+The feature is implemented by extending the contract to a collection of service descriptors (IServiceCollection) and the class that provides the mechanisms to configure an application's request pipeline (IApplicationBuilder).
+Implementation example in project API Startup.cs: 
 
 * Add using referente into Startup class.
 * Add the service AddSwaggerConfiguration in ConfigureServices.
@@ -96,9 +82,8 @@ public class Startup
      {
          // Swagger
          services.AddSwaggerConfiguration(Configuration);
-     }
-     
-	 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+     } 
+     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 	 {
 	    // Swagger 
 	    app.UseSwaggerConfiguration(Configuration);
