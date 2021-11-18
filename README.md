@@ -1,6 +1,6 @@
 # Swashbuckle
 
-Lib to include Swagger documentation in ASP.NET APIs.
+Lib to include Swagger documentation in ASP.NET APIs and apply filters in properties when to open api documentation.
 
 ## Development
 
@@ -16,14 +16,49 @@ dotnet build
 dotnet test
 ```
 
-### How to use it in API project 
+## Features
+**Attributes**
+``` C#
+[SwaggerExclude]
+public string MyProperty { get; set; }
+```
+`[SwaggerExclude]` - The decorator is responsible for ignoring property to open api documentation.	
+``` C#
+[SwaggerMaxLength(100)]
+public string MyProperty { get; set; }
+```
+`[SwaggerMaxLength(MaxLength)]` - The decorator is responsible for setting max length in property to open api documentation.
+``` C#
+[SwaggerRequired]
+public string MyProperty { get; set; }
+```
+`[SwaggerRequired]` - The decorator is responsible for setting value required property to open api documentation
 
-* Install the following NuGet packages into your solution's API project:  
-	* [FluentValidation](https://www.nuget.org/packages/FluentValidation/)
-	* [Microsoft.OpenApi](https://www.nuget.org/packages/Microsoft.OpenApi/)
-	* [Swashbuckle.AspNetCore.Filters](https://www.nuget.org/packages/Swashbuckle.AspNetCore.Filters/)
-	* [Swashbuckle.AspNetCore.ReDoc](https://www.nuget.org/packages/Swashbuckle.AspNetCore.ReDoc/)
-	* [Swashbuckle.AspNetCore.SwaggerGen](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerGen/)
+**Configurations**
+With the lib it is possible to configure Swagger in the API project registering the service and configuring the pipeline.
+The feature is implemented by extending the contract to a collection of service descriptors (IServiceCollection) and the class that provides the mechanisms to configure an application's request pipeline (IApplicationBuilder).
+Implementation example in project API Startup.cs: 
+
+``` C#
+public virtual void ConfigureServices(IServiceCollection services)
+{
+    // Register Swagger Configuration in app
+    services.AddSwaggerConfiguration(Configuration);
+}
+```
+
+``` C#
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    // Configure Swagger Configuration in pipeline 
+    app.UseSwaggerConfiguration(Configuration);
+}
+```
+
+## How to use in project 
+
+* Install the following NuGet packages into your solution's project:  
+	* [JSM.Swashbuckle.AspNetCore.Swagger](https://www.nuget.org/packages/JSM.Swashbuckle.AspNetCore.Swagger/)
 	
 * You can reference it directly in CSPROJ file:
 
@@ -31,15 +66,13 @@ dotnet test
 <Project Sdk="Microsoft.NET.Sdk">
    ...
     <ItemGroup>
-	    <PackageReference Include="FluentValidation" Version="10.3.4" />
-	    <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
-	    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.2" />
-	    <PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="6.2.3" />
-	    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+	    <PackageReference Include="JSM.Swashbuckle.AspNetCore.Swagger" Version="1.0.0" />
 	  </ItemGroup>
     ...
 </Project>
 ```
+## How to use in API project 
+
 * Add using referente into Startup class.
 * Add  the service AddSwaggerConfiguration in ConfigureServices.
 * Build your solution. 
@@ -63,4 +96,11 @@ public class Startup
          // Swagger
          services.AddSwaggerConfiguration(Configuration);
      }
+     
+	 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+	 {
+	    // Swagger 
+	    app.UseSwaggerConfiguration(Configuration);
+	 }
 }
+```
