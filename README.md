@@ -48,7 +48,7 @@ public string MyProperty { get; set; }
    ...
     <ItemGroup>
 	    <PackageReference Include="JSM.Swashbuckle.AspNetCore.Swagger" Version="1.0.0" />
-	  </ItemGroup>
+    </ItemGroup>
     ...
 </Project>
 ```
@@ -62,6 +62,7 @@ Implementation example in project API Startup.cs:
 * Add using referente into Startup class.
 * Add the service AddSwaggerConfiguration in ConfigureServices.
 * Configure the pipeline with UseSwaggerConfiguration in Configure.
+* Include configuration Swagger in appsettings.json.
 * Build your solution. 
 
 ```C#
