@@ -4,7 +4,7 @@ Lib to include Swagger documentation in ASP.NET APIs and apply filters in proper
 
 ## Development
 
-The project uses the .NET Standard 2.0 for packages and uses the [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1) for testing.
+The project uses the .NET Standard 2.1 for packages and uses the [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1) for testing.
 
 ### Restore and build packages
 ``` shell
