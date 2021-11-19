@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <RootNamespace>Swashbuckle</RootNamespace>
+    <PackageId>JSM.Swashbuckle.AspNetCore.Swagger</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.0.0</Version>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Authors>Juntos Somos Mais</Authors>
+    <Description>Use configuration Swagger tools to apply filters in properties and document APIs built on ASP.NET Core</Description>
+    <RepositoryUrl>https://github.com/juntossomosmais/JSM.Swashbuckle.AspNetCore</RepositoryUrl>
+    <PackageTags>swashbuckle;aspnetcore;swagger;documentation</PackageTags>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
