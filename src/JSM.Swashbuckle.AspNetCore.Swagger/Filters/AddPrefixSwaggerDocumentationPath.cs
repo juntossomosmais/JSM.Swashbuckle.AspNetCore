@@ -6,6 +6,9 @@ using Microsoft.OpenApi.Models;
 
 namespace JSM.Swashbuckle.AspNetCore.Swagger.Filters
 {
+    /// <summary>
+    /// Responsible to apply to prefix version in Swagger documentation
+    /// </summary>
     public class AddPrefixSwaggerDocumentationPath : IDocumentFilter
     {
         private readonly IConfiguration _configuration;
@@ -14,7 +17,9 @@ namespace JSM.Swashbuckle.AspNetCore.Swagger.Filters
         {
             _configuration = configuration;
         }
-
+        /// <summary>
+        /// Apply the prefix version in Swagger document
+        /// </summary>
         public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
         {
             if (swaggerDoc.Info.Title.Equals(

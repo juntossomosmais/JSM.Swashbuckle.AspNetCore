@@ -11,8 +11,14 @@ using System.Reflection;
 
 namespace JSM.Swashbuckle.AspNetCore.Swagger.Configurations
 {
+    /// <summary>
+    /// Providing the configurations API documentation in Startup class
+    /// </summary>
     public static class SwaggerConfiguration
     {
+        /// <summary>
+        /// Extending the contract to a collection of service descriptors, including Swagger Settings and Schema Filters
+        /// </summary>
         public static IServiceCollection AddSwaggerConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             var swaggerSettings = new SwaggerSettings();
@@ -63,6 +69,9 @@ namespace JSM.Swashbuckle.AspNetCore.Swagger.Configurations
             return services;
         }
 
+        /// <summary>
+        /// Configuring application pipeline to use Swagger settings (RouteTemplate, InternalDoc RedocOptions and ExternalDoc RedocOptions)
+        /// </summary>
         public static IApplicationBuilder UseSwaggerConfiguration(this IApplicationBuilder app, IConfiguration configuration)
         {
             app.UseSwagger(c => { c.RouteTemplate = configuration.GetValue<string>("Swagger:RouteTemplate"); });

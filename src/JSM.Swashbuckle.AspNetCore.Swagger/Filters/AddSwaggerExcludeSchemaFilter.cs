@@ -6,8 +6,14 @@ using System.Reflection;
 
 namespace JSM.Swashbuckle.AspNetCore.Swagger.Filters
 {
+    /// <summary>
+    /// Responsible to apply to ignoring properties in schema filter
+    /// </summary>
     public class AddSwaggerExcludeSchemaFilter : ISchemaFilter
     {
+        /// <summary>
+        /// Apply to ignoring properties in schema filters
+        /// </summary>
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
             if (schema?.Properties == null)
