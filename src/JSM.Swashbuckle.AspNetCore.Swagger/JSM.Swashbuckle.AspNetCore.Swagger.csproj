@@ -10,8 +10,8 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>Juntos Somos Mais</Authors>
     <Description>Use configuration Swagger tools to apply filters in properties and document APIs built on ASP.NET Core</Description>
-    <RepositoryUrl>https://github.com/juntossomosmais/JSM.Swashbuckle.AspNetCore</RepositoryUrl>
     <PackageTags>swashbuckle;aspnetcore;swagger;documentation</PackageTags>
+    <RepositoryUrl>https://github.com/juntossomosmais/JSM.Swashbuckle.AspNetCore</RepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
