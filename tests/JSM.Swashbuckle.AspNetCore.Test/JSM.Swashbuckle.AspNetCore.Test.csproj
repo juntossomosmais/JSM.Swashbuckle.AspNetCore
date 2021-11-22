@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JSM.Swashbuckle.AspNetCore.Swagger\JSM.Swashbuckle.AspNetCore.Swagger.csproj" />
+    <ProjectReference Include="..\..\src\JSM.Swashbuckle.AspNetCore.Swagger\JSM.Swashbuckle.AspNetCore.Swagger.csproj" />
   </ItemGroup>
 
 </Project>
