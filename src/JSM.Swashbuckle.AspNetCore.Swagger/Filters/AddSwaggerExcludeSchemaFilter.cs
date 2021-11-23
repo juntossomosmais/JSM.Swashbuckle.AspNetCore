@@ -24,13 +24,16 @@ namespace JSM.Swashbuckle.AspNetCore.Swagger.Filters
             }
 
             var excludedProperties = context.Type.GetProperties().Where(t => t.GetCustomAttribute<SwaggerExcludeAttribute>() != null);
-            foreach (PropertyInfo excludedProperty in excludedProperties.Where(s => !string.IsNullOrEmpty(s.Name)))
+            foreach (PropertyInfo excludedProperty in excludedProperties)
             {
-                var toCamelCase = char.ToLowerInvariant(excludedProperty.Name[0]) + excludedProperty.Name.Substring(1);
-
-                if (schema.Properties.ContainsKey(toCamelCase))
+                if (!string.IsNullOrEmpty(excludedProperty.Name))
                 {
-                    schema.Properties.Remove(toCamelCase);
+                    var toCamelCase = char.ToLowerInvariant(excludedProperty.Name[0]) + excludedProperty.Name.Substring(1);
+
+                    if (schema.Properties.ContainsKey(toCamelCase))
+                    {
+                        schema.Properties.Remove(toCamelCase);
+                    }
                 }
             }
         }
