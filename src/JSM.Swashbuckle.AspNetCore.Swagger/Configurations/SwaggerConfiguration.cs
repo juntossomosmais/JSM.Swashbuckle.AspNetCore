@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Filters;
 using System.IO;
 using System.Reflection;
+using System.Linq;
 
 namespace JSM.Swashbuckle.AspNetCore.Swagger.Configurations
 {
@@ -19,6 +20,9 @@ namespace JSM.Swashbuckle.AspNetCore.Swagger.Configurations
         /// <summary>
         /// Extending the contract to a collection of service descriptors, including Swagger Settings and Schema Filters
         /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns>Service Collection with the Swagger documentation activated</returns>
         public static IServiceCollection AddSwaggerConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             var swaggerSettings = new SwaggerSettings();
@@ -27,10 +31,9 @@ namespace JSM.Swashbuckle.AspNetCore.Swagger.Configurations
             var swaggerValidator = new SwaggerSettingsValidator();
             var resultValidate = swaggerValidator.Validate(swaggerSettings);
 
-            if (!resultValidate.IsValid)
+            if (!resultValidate.IsValid && resultValidate.Errors.Any())
             {
-                if (resultValidate.Errors.Count > 0)
-                    throw new ValidationException(resultValidate.Errors);
+                throw new ValidationException(resultValidate.Errors);
             }
 
             services.AddSwaggerGen(s =>
@@ -70,8 +73,11 @@ namespace JSM.Swashbuckle.AspNetCore.Swagger.Configurations
         }
 
         /// <summary>
-        /// Configuring application pipeline to use Swagger settings (RouteTemplate, InternalDoc RedocOptions and ExternalDoc RedocOptions)
+        /// Configuring application pipeline to ability the use Swagger middlewares
         /// </summary>
+        /// <param name="app"></param>
+        /// <param name="configuration"></param>
+        /// <returns>Application pipeline with Swagger middlewares activated</returns>
         public static IApplicationBuilder UseSwaggerConfiguration(this IApplicationBuilder app, IConfiguration configuration)
         {
             app.UseSwagger(c => { c.RouteTemplate = configuration.GetValue<string>("Swagger:RouteTemplate"); });

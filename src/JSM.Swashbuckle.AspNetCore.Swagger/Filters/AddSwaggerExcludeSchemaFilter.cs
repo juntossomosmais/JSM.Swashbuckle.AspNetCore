@@ -14,6 +14,8 @@ namespace JSM.Swashbuckle.AspNetCore.Swagger.Filters
         /// <summary>
         /// Apply to ignoring properties in schema filters
         /// </summary>
+        /// <param name="schema"></param>
+        /// <param name="context"></param>
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
             if (schema?.Properties == null)
@@ -22,11 +24,8 @@ namespace JSM.Swashbuckle.AspNetCore.Swagger.Filters
             }
 
             var excludedProperties = context.Type.GetProperties().Where(t => t.GetCustomAttribute<SwaggerExcludeAttribute>() != null);
-            foreach (PropertyInfo excludedProperty in excludedProperties)
+            foreach (PropertyInfo excludedProperty in excludedProperties.Where(s => !string.IsNullOrEmpty(s.Name)))
             {
-                if (string.IsNullOrEmpty(excludedProperty.Name))
-                    continue;
-
                 var toCamelCase = char.ToLowerInvariant(excludedProperty.Name[0]) + excludedProperty.Name.Substring(1);
 
                 if (schema.Properties.ContainsKey(toCamelCase))

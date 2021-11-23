@@ -13,13 +13,20 @@ namespace JSM.Swashbuckle.AspNetCore.Swagger.Filters
     {
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// Inject in the constructor the IConfiguration instance
+        /// </summary>
+        /// <param name="configuration"></param>
         public AddPrefixSwaggerDocumentationPath(IConfiguration configuration)
         {
             _configuration = configuration;
         }
+
         /// <summary>
         /// Apply the prefix version in Swagger document
         /// </summary>
+        /// <param name="swaggerDoc"></param>
+        /// <param name="context"></param>
         public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
         {
             if (swaggerDoc.Info.Title.Equals(

@@ -15,6 +15,8 @@ namespace JSM.Swashbuckle.AspNetCore.Swagger.Filters
         /// <summary>
         /// Apply the mandatory schema filters in properties
         /// </summary>
+        /// <param name="schema"></param>
+        /// <param name="context"></param>
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
             PropertyInfo[] properties = context.Type.GetProperties();
