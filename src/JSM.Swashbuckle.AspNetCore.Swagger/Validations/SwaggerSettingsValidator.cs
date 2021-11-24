@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Models;
 
 namespace JSM.Swashbuckle.AspNetCore.Swagger.Validations
 {
-    public class SwaggerSettingsValidator : AbstractValidator<SwaggerSettings>
+    internal class SwaggerSettingsValidator : AbstractValidator<SwaggerSettings>
     {
         public SwaggerSettingsValidator()
         {

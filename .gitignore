@@ -11,3 +11,4 @@ artifacts/
 *.sln.ide
 tests-reports/
 .idea/
+*.vs

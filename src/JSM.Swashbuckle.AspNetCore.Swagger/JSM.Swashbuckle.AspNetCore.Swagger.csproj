@@ -6,7 +6,7 @@
     <RootNamespace>Swashbuckle</RootNamespace>
     <PackageId>JSM.Swashbuckle.AspNetCore</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>Juntos Somos Mais</Authors>
     <Description>Use configuration Swagger tools to apply filters in properties and document APIs built on ASP.NET Core</Description>

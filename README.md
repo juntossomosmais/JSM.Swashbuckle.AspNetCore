@@ -2,6 +2,10 @@
 
 Lib to include Swagger documentation in ASP.NET APIs and apply filters in properties when to open api documentation.
 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=juntossomosmais_JSM.Swashbuckle.AspNetCore&metric=coverage)](https://sonarcloud.io/dashboard?id=juntossomosmais_JSM.Swashbuckle.AspNetCore)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=juntossomosmais_JSM.Swashbuckle.AspNetCore&metric=alert_status)](https://sonarcloud.io/dashboard?id=juntossomosmais_JSM.Swashbuckle.AspNetCore)
+[![Nuget](https://img.shields.io/nuget/v/JSM.Swashbuckle.AspNetCore)](https://www.nuget.org/packages/JSM.Swashbuckle.AspNetCore/)
+
 ## Development
 
 The project uses the .NET Standard 2.1 for packages and uses the [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1) for testing.

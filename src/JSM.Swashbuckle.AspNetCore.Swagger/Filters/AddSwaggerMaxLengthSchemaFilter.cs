@@ -5,14 +5,22 @@ using System.Reflection;
 
 namespace JSM.Swashbuckle.AspNetCore.Swagger.Filters
 {
+    /// <summary>
+    /// Responsible to apply the max length in schema filter
+    /// </summary>
     public class AddSwaggerMaxLengthSchemaFilter : ISchemaFilter
     {
+        /// <summary>
+        /// Apply the max length schema filters in properties
+        /// </summary>
+        /// <param name="schema"></param>
+        /// <param name="context"></param>
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
             PropertyInfo[] properties = context.Type.GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                SwaggerMaxLengthAttribute attribute = property.GetCustomAttribute(typeof(SwaggerMaxLengthAttribute)) as SwaggerMaxLengthAttribute;
+                var attribute = property.GetCustomAttribute(typeof(SwaggerMaxLengthAttribute)) as SwaggerMaxLengthAttribute;
 
                 if (attribute != null)
                 {
